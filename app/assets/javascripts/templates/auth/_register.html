@@ -1,0 +1,46 @@
+
+<div class="page-header">
+
+<h1>Register!</h1>
+</div>
+<div class="ui attached message">
+  <div class="header">
+    Welcome to <b>DUNNO.IO</b>, the online community where college students ask and answer questions for their assignments projects, and tests!
+  </div>
+  <p>Want to join the community? Sign-up for an account using your university email!</p>
+</div>
+
+<div ng-show="notAgreedMessage" class="ui small negative message">
+  <small>Must agree with terms and conditions of use.</small>
+</div>
+
+<div ng-show="registerErrors" ng-repeat="error in registerErrors" class="ui small negative message">
+  <small>{{error}}</small>
+</div>
+
+<form ng-submit = "register()" class="ui form attached fluid segment">
+  <div class="field">
+    <label>Username</label>
+    <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
+  </div>
+  <div class="field">
+    <label>Email</label>
+    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+  </div>
+  <div class="inline field">
+    <div class="ui checkbox">
+      <input type="checkbox" ng-model="agreed" id="terms">
+      <label for="terms">I agree to the <a ng-click="viewAgreement()">terms and conditions</a>.</label>
+    </div>
+  </div>
+  <input type="submit" class="ui blue submit button"></div>
+</form>
+<div class="ui bottom attached warning message">
+  <i class="icon help"></i>
+  Already signed up? <a href="/login">Login here</a> instead.
+</div>
+<h3>To login, verify your email after signing up!</h3>

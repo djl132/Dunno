@@ -1,0 +1,37 @@
+
+<div class="ui attached message">
+  <div class="header">
+    <b>Edit Group</b>
+     : {{group.name}}
+  </div>
+</div>
+<div class="ui large form attached fluid segment">
+
+ <div ng-show="errors" ng-repeat="error in errors" class="ui small negative message">
+   <small>{{error}}</small>
+ </div>
+
+ <div class="field">
+   <label>Name</label>
+   <input type="text"
+   class="form-control"
+   placeholder="name of group"
+   ng-model="group.name"></input>
+ </div>
+ <div class="field">
+   <label>Group Pic</label>
+  <div flow-init flow-files-added="processFile($files[0])">
+       <input type="file" flow-btn/>
+       <img style="width:250 " ng-src="{{imageString}}" />
+  </div>
+ </div>
+  <div class="field">
+    <label>Description</label><small>* minimum 7 chars</small>
+    <input type="text"
+    class="form-control"
+    placeholder="description of group"
+    ng-model="group.description"></input>
+  </div>
+  <div ng-click="groupModal.editGroupInfo(group)" class="ui green submit button">Save</div>
+  <a ng-click="close()">Cancel</a>
+</div>

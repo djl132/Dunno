@@ -1,0 +1,32 @@
+
+<h3>{{otherUser.username}}</h3>
+<div ng-repeat = "message in c.messages track by $index">
+
+  <div class="ui comments">
+    <div style="margin-left: 5px" class="comment">
+      <a class="avatar">
+        <img style="height: 40px; width:40x;"  ng-src="{{message.user.avatar}}">
+      </a>
+
+      <div class="content">
+        <a href = "/profile/{{message.user.id}}" class="author">{{message.user.username}}</a>
+        <div class="metadata">
+          <span class="date">{{message.created_at | timeAgo}}</span>
+        </div>
+        <div class="text">
+        {{message.body}}
+        </div>
+      </div>
+  </div>
+
+  </div>
+</div>
+
+<form class="ui reply form" ng-init="show=true" ng-show="show">
+    <div class="field">
+      <textarea ng-model="body" style="margin-top: 0px; margin-bottom: 0px; height: 168px;"></textarea>
+    </div>
+    <div ng-click="message.sendMessage(body)" class="ui blue labeled submit icon button">
+      <i  class="icon edit"></i> Send
+    </div>
+  </form>

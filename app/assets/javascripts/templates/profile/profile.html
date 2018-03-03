@@ -1,0 +1,96 @@
+
+<div class="row">
+  <div class="col-md-4">
+    <h1>{{user.username}}</h1>
+
+    <img style="width:200" ng-src="{{user.avatar}}" />
+
+    <!-- <button class="btn btn-success">Message</button> -->
+    <hr>
+
+
+      <h3>{{user.reputation_level}} REP</h3>
+      <h4>FRIENDLY: {{user.friendlyPoints}}</h4>
+      <h4>ACCURACY: {{user.accuracyPoints}}</h4>
+      <h4>CLARITY: {{user.clarityPoints}}</h4>
+
+      <uib-tabset active="activePill" vertical="true  " type="pills">
+       <uib-tab index="0" heading="I know about" ng-click="active=1">Ask Me About</uib-tab>
+       <uib-tab index="1" heading="Review"ng-click="active=2">Reviews</uib-tab>
+      </uib-tabset>
+
+
+      <p>Bio: {{user.bio}}</p>
+      <br>
+      <p>Major: {{user.major}}</p>
+      <br>
+      <p>Classes: {{user.classes}}</p>
+      <br>
+      <p>Groups:</p>
+      <div ng-repeat="group in joinedGroups">
+          <a href="/groups/{{group.id}}">#{{group.name}}</a>
+      </div>
+      <br>
+      <a ng-click="editProfileInfo()" class="btn btn-primary">edit</a>
+
+      <div style="position: relative"></div>
+
+    </div>
+    <div class="col-md-8">
+
+      <h3>Status</h3>
+
+    </div>
+
+  <uib-tabset>
+
+    <ui-tab ng-show="active=1" class="col-md-8">
+    <br>
+    <br>
+    <br>
+    <h3>Ask Me About</h3>
+      <uib-tabset type="pills" vertical="true" ng-repeat ="group in joinedGroups">
+         <uib-tab heading="{{group.name}} : {{user.reputation_for_topics[group.name]}}"></uib-tab>
+      </uib-tabset>
+    </ui-tab>
+
+
+
+        <!-- <uib-tab index="1" heading="Static title">Static content</uib-tab>
+        <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" disable="tab.disabled">
+          {{tab.content}}
+        </uib-tab>
+        <uib-tab index="3" select="alertMe()">
+          <uib-tab-heading>
+            <i class="glyphicon glyphicon-bell"></i> Alert!
+          </uib-tab-heading>
+          I've got an HTML heading, and a select callback. Pretty cool!
+        </uib-tab> -->
+
+
+  <ui-tab ng-show="active=2" class="col-md-8">
+
+    <h3>Reviews</h3>
+    <button ng-click="writeReview()" class="btn btn-primary"> Write a review </button><br>
+
+    <div ng-repeat="review in reviewsOfUser track by $index">
+      <hr>
+      <img style="width:45" src="{{review.reviewer.avatar}}"/><a href="/profile/{{review.reviewer.id}}" class="author">{{review.reviewer.username}}</a>
+
+      Friendliness: <span uib-rating ng-model="review.friendliness" max="10"  read-only="isReadonly" aria-labelledby="default-rating"></span>
+      <br>
+      Accuracy: <span uib-rating ng-model="review.accuracy" max= "10" read-only="isReadonly" aria-labelledby="default-rating"></span>
+      <br>
+      Clarity: <span uib-rating ng-model="review.clarity" max= "10" read-only="isReadonly" aria-labelledby="default-rating"></span>
+      <br>
+      <h5> Comments:<br> {{review.content}} </h5>
+      <a ng-click="deleteReview(review, $index)" >Delete</a>
+      <a ng-click="editReview(review, $index)">Edit</a>
+    </div>
+
+  </ui-tab>
+
+</uib-tabset>
+
+
+</div>

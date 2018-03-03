@@ -1,0 +1,53 @@
+<div class="question">
+
+  <div class="question__first-row">
+    <div class="question__first-row__left-content">
+      <div class="question__avatar">
+        <div class="question__avatar__image">
+          <img src="https://upload.wikimedia.org/wikipedia/en/d/d5/Heart_Beat_-_Wang_Lee_Hom.jpg" />
+          <span><b>{{::reputation_for_topic}}</b>pt</span>
+        </div>
+      </div>
+      <div class="question__user-name"><a ng-href="/profile/{{::user.id}}">{{::username}}</a></div>
+      <div class="question__user-status-container">
+        <div class="status"></div>
+      </div>
+      <div class="question__expiration">{{::expires_in | amDurationFormat : 'day' }} left</div>
+    </div>
+    <div class="question__first-row__right-content">
+      <div class="question__button" ng-click="group.followQuestion(question)" ng-if="!group.Auth.followingQuestion(question)">
+        follow <b>{{question.followers_count}}</b>
+      </div>
+      <div class="question__button" ng-click="group.unfollowQuestion(question)" ng-if="group.Auth.followingQuestion(question)">
+        following <b>{{question.followers_count}}</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="question__second-row">
+    <p class="title overflow-ellipsis">{{::title}}</p>
+    <p ng-attr-id="question-{{::id}}" class="body overflow-ellipsis"></p>
+    <div ng-if="group.Auth.canEdit(question) && question.opened" ng-click="group.setUpResourceCreation('answer', question)" class="question__answer-button">ANSWER</div>
+    <span class="question__edit-link"><b><a ng-click="group.editResource('question',question)" ng-if ="group.Auth.canEdit(question)">edit</a></b></span>
+    <span class="question__edit-link"><b><a ng-click="group.deleteResource('question', groupModel, question, $index)" ng-if ="group.Auth.canEdit(question)">delete</a></b></span>
+    <span class="question__edit-link"><b><a ng-click="group.updateResource('question', groupModel, question, $index)"  ng-if ="group.Auth.canUpdate(question)">save</a></b></span>
+    <span class="question__edit-link"><b><a ng-click="" ng-if ="group.Auth.canUpdate(question)">cancel</a></b></span>
+
+    <div ng-if="question.emptyEditor">
+      <small>Sorry, I need more information about your question.</small>
+    </div>
+  </div>
+
+  <div class="question__third-row">
+    <div class="answers-button"><a ng-click="group.getAnswers(question)">{{question.answer_count}} answers <span><i id="dropdown-arrow" class="angle right medium icon vote"></i>
+    </span></a></div>
+    <hr ng-if="question.opened" class="question__bottom-bar">
+  </div>
+
+</div>
+
+ <div ng-if="question.opened" ng-repeat="answer in question.answers">
+  <answer-quill></answer-quill>
+</div>
+
+<answer-form ng-if="question.creatingChildren"></answer-form>

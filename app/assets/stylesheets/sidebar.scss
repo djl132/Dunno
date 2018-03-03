@@ -1,0 +1,194 @@
+.top, .sidebar-body{
+  box-sizing: border-box;
+  font-size: 18px;
+  line-height: normal;
+}
+
+a, a:active, a:hover, a:visited{
+  color: rgba(172, 178, 183, 0.6);
+  text-decoration: none;
+}
+
+.top {
+  padding: 0 20px;
+  padding-top: 3px;
+  height: 80px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(48, 62, 77, 1);
+  width: 260px;
+
+  &__left-container {
+    margin-top: -10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sidebar-header-text {
+    /* CWRU: */
+    font-family: AvenirNext-medium;
+    font-size: 30px;
+    margin-bottom: -10px;
+    letter-spacing: 1.75px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  &__sidebar-username {
+    /* djl132: */
+    margin-top: 5px;
+    font-family: AvenirNext-Medium;
+    font-size: 18px;
+    color: #FFFFFF;
+
+    img {
+    }
+  }
+
+  &__review-person {
+  display: flex;
+  justify-content: space-between;
+  /*     if you don't want rows */
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-right: 17px;
+  padding: 20px 0;
+
+  &__image {
+    position: relative;
+
+    img {
+      margin-right: 10px;
+      height: 60px;
+      border-radius: 25%; //if you want squares
+    }
+
+    span {
+      position: absolute;
+      top: -11px;
+      left: 40px;
+      background-color: #A6266E;
+      border-radius: 2rem;
+      color: #ffffff;
+      display: inline-block;
+      line-height: 0.7rem;
+      padding: 0.65rem 0.6rem 0.42rem 0.6rem;
+      margin-right: 15px;
+      width: auto;
+      font-family: Avenir-medium;
+      font-size: 20px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 2%;
+  }
+
+  &__header {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: -5px;
+  }
+
+  &__team {
+    color: #666666;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+}
+
+.sidebar-body {
+  margin-top: 65px;
+  float: left;
+  width: 260px;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(48, 62, 77, 1);
+
+  &__items {
+    font-size: 1.2rem;
+    padding: 0;
+    margin-top: 0px;
+
+    li {
+      padding: 5px 20px;
+      cursor: pointer;
+      font-family: AvenirNext-Regular;
+      font-size: 18px;
+      line-height: 29px;
+      // color: rgba(172, 178, 183, 1);
+
+      &:visited {
+        color: white;
+      }
+
+      &:hover {
+      border-radius: 0 0.2rem 0.2rem 0;
+      background-color: rgba(255, 255, 255, 0.075);
+      width: 250px;
+      color: white;
+          a{
+          color:white;
+          }
+      }
+
+      &:active, &.selected{
+      background-color: rgba(102, 152, 200, 1);
+      border-radius: 0 0.2rem 0.2rem 0;
+      width: 250px;
+      color: white;
+
+          a{
+          color:white;
+          }
+
+      }
+    }
+
+
+  }
+}
+
+/* PIC */
+
+.profile-name, .channels, ul, .channel-name, .direct-message {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* THIS IS GLOBAL to SIDEBAR ???? WHERE DO I PUT THIS??????*/
+
+.sidebar-body > div:first-of-type{
+  margin-bottom: -8px;
+}
+.list-title {
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.channels {
+  padding-top: 1.5rem;
+  font-size: 14px;
+  font-family: AvenirNext-medium;
+  letter-spacing: 0.85px;
+
+
+}
+
+
+
+.channels :hover {
+  color: white;
+}
+
+.channels:visited {
+  color: rgba(255, 255, 255, 0.25);
+}

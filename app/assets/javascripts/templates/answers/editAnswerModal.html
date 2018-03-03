@@ -1,0 +1,26 @@
+<div class="ui large attached message ">
+    <div class="header">Answer</div>
+      <div ng-repeat = "error in errors track by $index" class="ui small negative message">
+        <small>{{error}}</small>
+      </div>
+      <div ng-show="noBody" class="ui small negative message">
+        <small>Sorry, I need more information about your answer.</small>
+      </div>
+
+  <div class="ui feed header">
+      <strong>{{username}}</strong>  asked <strong>{{topic}}</strong>
+
+        <h2>  {{title}} </h2>
+        <div id="question-display"></div>
+        <hr>
+  </div>
+</div>
+
+<div class="ui large form attached fluid segment">
+  <div id="toolbar"></div>
+  <div id="edit-answer" style="border: 1px solid rgba(34,36,38,.15), height: auto" ></div>
+<hr>
+  <a ng-click="editAnswerModal.editAnswer()" class="ui green submit button">Answer</a>
+  <a ng-click="close()">Cancel</a>
+
+</div>

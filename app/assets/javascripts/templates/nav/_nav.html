@@ -1,0 +1,41 @@
+  <div ng-if="loggedIn">
+    <div  class="top">
+
+      <div class="top__left-container">
+        <h1 class="top__sidebar-header-text">CWRU
+        </h1>
+        <div class="top__sidebar-username">{{user.username}}<img style="width:50" ng-src="{{user.avatar}}"/>
+          <button ng-click="logout()">logout</button>
+          </div>
+      </div>
+
+      <div class="top__review-person">
+          <div class="top__review-person__content">
+            <div class="top__review-person__image">
+              <img src="http://placehold.it/40x40">
+              <span class="number">{{user.reputation_level}}</span>
+            </div>
+
+          </div>
+      </div>
+
+
+  </div>
+
+  <div class="sidebar-body">
+    <div class="list-title channels"><a href="/"> THREADS (121)</a></div>
+    <div class="list-title channels"><a href="/groups" >CLASSES (121)<i class="add circle icon"></i></a></div>
+
+      <ul class="sidebar-body__items" ng-repeat="g in user.groups">
+                <li ng-attr-id="group-{{g.id}}"><a ng-href="/groups/{{g.id}}"># {{g.name}}</a></li>
+      </ul>
+
+      <div class="list-title channels">
+        <a ng-click="nav.createMessage()">DIRECT MESSAGES (12)<i class="add circle icon"></i></a>
+      </div>
+
+      <ul class="sidebar-body__items" ng-repeat="c in user.conversations">
+        <li ng-attr-id="{{'conversation-' + c.other_user.id}}"><a ng-href="/message/{{c.other_user.id}}"># {{c.other_user.name}}</a></li>
+      </ul>
+  </div>
+</div>

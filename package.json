@@ -1,0 +1,27 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djl132/learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djl132/learning/issues"
+  },
+  "homepage": "https://github.com/djl132/learning#readme",
+  "dependencies": {
+    "angular-moment": "^1.0.1",
+    "moment": "^2.18.1",
+    "semantic-ui": "^2.2.11"
+  }
+}

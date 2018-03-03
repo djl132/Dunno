@@ -1,0 +1,14 @@
+
+
+    <header ng-controller="HeaderCtrl as header" ng-include='"header/header.html"' class="header">Header</header>
+
+       <div class ="wrapper">
+         <article class="main">
+
+           <div ng-repeat="question in groupModel.questions">
+               <group-question></group-question>
+           </div>
+
+         </article>
+         <aside ng-controller="GroupNavCtrl as groupNav" ng-include='"group/group_nav.html"' class="aside-2">Aside 2</aside>
+       </div>

@@ -1,0 +1,28 @@
+    <h4>Write a Review</h4>
+    Friendliness: <span uib-rating ng-model="friendliness" max="max" read-only="isReadonly" on-hover="hoveringOverF(friendliness)" on-leave="f = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="f && !isReadonly">{{Fpercent}}%</span>
+
+    <br>
+    Accuracy: <span uib-rating ng-model="accuracy" max="max" read-only="isReadonly" on-hover="hoveringOverA(accuracy)" on-leave="a = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="a && !isReadonly">{{Apercent}}%</span>
+    <br>
+
+    Clarity: <span uib-rating ng-model="clarity" max="max" read-only="isReadonly" on-hover="hoveringOverC(clarity)" on-leave="c = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="c && !isReadonly">{{Cpercent}}%</span>
+    <br>
+    <a ng-click="clearRatings()">Clear Ratings</a>
+
+
+    <h5>Comments</h5>
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="How was your experience with this person?"
+      ng-model="content"></input>
+    </div>
+
+
+
+    <hr>
+    <button type="button" class="btn btn-sm btn-primary" ng-click="reviewModal.createReview(friendliness, accuracy, clarity, content)">Submit Review</button>
+    <a ng-click="close()">Cancel</a>

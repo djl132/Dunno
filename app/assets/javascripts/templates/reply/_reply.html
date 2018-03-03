@@ -1,0 +1,26 @@
+    <div class="question">
+      <div class="question__first-row">
+        <div class="question__first-row__left-content">
+          <div class="question__avatar">
+            <div class="question__avatar__image">
+              <img src="https://upload.wikimedia.org/wikipedia/en/d/d5/Heart_Beat_-_Wang_Lee_Hom.jpg" />
+              <span><b>{{::reputation_for_topic}}</b>pt</span>
+            </div>
+          </div>
+          <div class="question__user-name"><a ng-href="/profile/{{::reply.user.id}}" >{{reply.user.username}}</a></div>
+          <div class="question__user-status-container"><div class="status"></div></div>
+          <div class="question__expiration">{{reply.created_at | amDurationFormat : 'day' }}</div>
+          </div>
+      </div>
+      <div class="question__second-row">
+        <p ng-attr-id="reply-{{::id}}" class="body opened"></p>
+        <span ng-if="group.Auth.canEdit(reply)" ng-click="group.editResource('reply',reply)" class="answer__edit-link"> edit</span>
+        <span ng-if="group.Auth.canEdit(reply)" class="answer__edit-link" ng-click="group.deleteResource('reply', comment, reply, $index)"> delete</span>
+        <span ng-if="group.Auth.cUNotBanned()" class="answer__edit-link" ng-click="group.setUpReply(reply, comment)"> reply</span>
+        <span ng-if="group.Auth.canUpdate(reply)" ng-click="group.updateResource('reply',comment, reply, $index)" class="answer__edit-link">save</span>
+        <span class="answer__edit-link" ng-if="group.Auth.canUpdate(reply)" ng-click="group.cancelEdit('reply', reply)"> cancel</span>
+        <div ng-if="reply.emptyEditor">
+          <small>Sorry, I need more information about your reply.</small>
+        </div>
+      </div>
+    </div>

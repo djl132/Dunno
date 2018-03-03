@@ -1,0 +1,42 @@
+
+    <div class="ui large attached message ">
+      <div class="header">Edit Profile</div>
+      <p>Make sure you specify the class you would like to post to.</p>
+    </div>
+
+    <div class="ui large form attached fluid segment">
+
+        <div ng-repeat = "error in errors track by $index" class="ui small negative message">
+          <small>{{error}}</small>
+        </div>
+
+      <div class="field">
+        <label>Profile Pic</label>
+        <div flow-init flow-files-added="processFile($files[0])">
+             <input type="file" flow-btn/>
+             <img style="width:250 " ng-src="{{imageString}}" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Username</label>
+        <input type="text" ng-model="user.username" class="form-control">
+      </div>
+      <div class="field">
+        <label>Major</label>
+        <input type="text" ng-model="user.major" class="form-control">
+      </div>
+      <div class="field">
+        <label>Bio</label>
+        <input type="text" ng-model="user.bio" class="form-control">
+      </div>
+      <div class="field">
+        <label>Classes</label>
+        <input type="text" ng-model="user.classes" class="form-control">
+      </div>
+
+
+      <button type="button" class="btn btn-sm btn-primary" ng-click="profileModal.editProfileInfo(user)">Save Info</button>
+      <a ng-click = "close()">Cancel</a>
+
+    </div>

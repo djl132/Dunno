@@ -1,0 +1,41 @@
+<div class="client_main_container">
+<!-- Header{{header.currentUser}} -->
+<header id="client_header">
+     <div class="channel_header">
+       <div class="messages_header">
+         <div class="channel_title">
+           <div id="channel_name_container" class="channel_name_container">
+             <edit-in-place value="groupModel.name"></edit-in-place>
+           </div>
+           <div id="channel_header_info" class="channel_header_info">
+             <div class="channel_header_info_item">
+               <span id="channel_members_toggle_count_count">{{groupModel.users.length}} members</span>
+             </div>
+
+             <div class="channel_header_info_item">
+               <edit-in-place class="overflow-ellipsis" value="groupModel.name"></edit-in-place>
+
+               <span id="channel_topic_text" class="inline_edit_input no_jumbomoji" placeholder="Add a description...">{{groupModel.description}}</span>
+             </div>
+         </div>
+         <div class="channel_title_info"> 
+         </div>
+       </div>
+       </div>
+
+       <div class="flex_header">
+         <div>
+         <a ng-click="group.askGroup()" ng-if="group.Auth.cUNotBanned() && group.Auth.cUIsMemberOfCurrentGroup()" class="btn btn-success">Ask Group</a>
+         <a ng-click="group.join()" ng-if="group.Auth.cUNotBanned() && !group.Auth.cUIsMemberOfCurrentGroup()" class="btn btn-success">Join Group</a>
+         <a ng-click="group.leave()" ng-if="group.Auth.cUNotBanned() && group.Auth.cUIsMemberOfCurrentGroup()" class="btn btn-success">Leave Group</a>
+       </div>
+         <div id="search_container">
+             <div id="header_search_form" class="search_form">
+               <input class="prompt" type="text" placeholder="Search for a question...">
+         </div>
+       </div>
+      </div>
+
+     </div>
+   </header>
+ </div>

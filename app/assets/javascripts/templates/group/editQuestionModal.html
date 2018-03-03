@@ -1,0 +1,35 @@
+<!-- Initialize Quill editor -->
+
+
+  <div class="ui large attached message ">
+    <div class="header">Edit Your Question</div>
+    <p>Make sure you specify the class you would like to post to.</p>
+  </div>
+
+        <div class="ui large form attached fluid segment">
+
+            <div ng-repeat = "error in errors track by $index" class="ui small negative message">
+              <small>{{error}}</small>
+            </div>
+            <div ng-show="noBody" class="ui small negative message">
+              <small>Sorry, I need more information about your question.</small>
+            </div>
+
+
+          <div class="field">
+            <label>Title</label><small>* minimum 7 chars</small>
+            <input type="text"
+            class="form-control"
+            placeholder="Title of question"
+            ng-model="title"></input>
+          </div>
+
+            <div id="toolbar">
+              <div id="edit-question" style="border: 1px solid rgba(34,36,38,.15)"></div>
+
+            </div>
+            <br>
+
+          <div ng-click="groupModal.editQuestion(title)" class="ui green submit button">Save</div>
+          <a ng-click="close()">Cancel</a>
+        </div>

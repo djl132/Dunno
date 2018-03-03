@@ -1,0 +1,17 @@
+
+
+<div class="question__avatar">
+  <div class="question__avatar__image">
+    <img src="https://upload.wikimedia.org/wikipedia/en/d/d5/Heart_Beat_-_Wang_Lee_Hom.jpg" />
+  </div>
+</div>
+
+  <div ng-attr-id="reply-form-{{::id}}"></div>
+  <div>
+    <a ng-click="group.reply(comment)">Submit</a>
+    <a ng-click="group.cancelResourceCreation(comment)">Cancel</a>
+  </div>
+
+  <div ng-show="comment.noReplyBody">
+    <small>Sorry, I need more information about your question.</small>
+  </div>

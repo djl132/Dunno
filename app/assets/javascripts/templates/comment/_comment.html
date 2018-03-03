@@ -1,0 +1,43 @@
+
+
+<div class="comment">
+    <div class="question">
+      <div class="question__first-row">
+        <div class="question__first-row__left-content">
+          <div class="question__avatar">
+            <div class="question__avatar__image">
+              <img src="https://upload.wikimedia.org/wikipedia/en/d/d5/Heart_Beat_-_Wang_Lee_Hom.jpg" />
+              <span><b>{{::reputation_for_topic}}</b>pt</span>
+            </div>
+          </div>
+          <div class="question__user-name"><a ng-href="/profile/{{::user.id}}" >{{comment.user.username}}</a></div>
+          <div class="question__user-status-container"><div class="status"></div></div>
+          <div class="question__expiration">{{comment.created_at | amDurationFormat : 'day' }}</div>
+          </div>
+      </div>
+      <div class="question__second-row">
+        <p ng-attr-id="comment-{{::id}}" class="body opened"></p>
+        <span class="answer_edit_link" ng-if="group.Auth.cUNotBanned()" ng-click="group.setUpResourceCreation('reply', comment)">reply</span>
+        <span ng-if="group.Auth.canEdit(comment)" ng-click="group.editResource('comment',comment)" class="answer__edit-link"> edit</span>
+        <span ng-if="group.Auth.canEdit(comment)" class="question__edit-link"><b><a ng-click="group.deleteResource('comment', answer, comment, $index)">delete</a></b></span>
+        <span ng-if ="group.Auth.canUpdate(comment)" ng-click="group.updateResource('comment', answer, comment, $index)" class="answer__edit-link">save</span>
+        <span class="answer__edit-link" ng-if="group.Auth.canUpdate(comment)" ng-click="group.cancelEdit('comment', comment)"> cancel</span>
+      </div>
+      <div ng-if="comment.emptyEditor">
+        <small>Sorry, I need more information about your comment.</small>
+      </div>
+    </div>
+    <div class="comment__ reply-counter">
+      <div class="comment__reply-counter__counter">
+        <span ng-click="group.getReplies(comment)">{{comment.reply_count}}</span>
+      </div>
+      <div ng-if="comment.open" class="comment__dropdown"><i id="chevron-button" class="angle down big icon vote"></i></div>
+    </div>
+
+  </div>
+
+  <div ng-if="comment.open" ng-repeat="reply in comment.replies track by $index">
+      <reply></reply>
+  </div>
+
+  <reply-form ng-if="comment.creatingChildren"></reply-form>

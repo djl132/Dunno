@@ -1,0 +1,27 @@
+<div class="comment">
+    <div class="question">
+      <div class="question__first-row">
+        <div class="question__first-row__left-content">
+          <div class="question__avatar">
+            <div class="question__avatar__image">
+              <img ng-src="https://upload.wikimedia.org/wikipedia/en/d/d5/Heart_Beat_-_Wang_Lee_Hom.jpg" />
+              <span><b>{{::reputation_for_topic}}</b>pt</span>
+            </div>
+          </div>
+          <div class="question__user-name"><a ng-href="/profile/{{::user.id}}" >{{comment.user.username}}</a></div>
+          <div class="question__user-status-container"><div class="status"></div></div>
+          <div class="question__expiration">{{comment.created_at | amDurationFormat : 'day' }}</div>
+          </div>
+      </div>
+      <div class="question__second-row">
+        <p class="body">dfjksdj dgdkgfjk sjgkd sgjdksjgkjg ksjgkd sjgk jdfhd ghfdhf dhfdgh fdhdfd hfdh fdhghdhfh fhdf ghfghfghgf <span class="answer__edit-link"> edit</span></p>
+      </div>
+    </div>
+    <div class="comment__reply-counter">
+      <div class="comment__reply-counter__counter">
+        <span>32</span>
+      </div>
+      <div class="comment__dropdown"><i id="chevron-button" class="angle down big icon vote"></i></div>
+    </div>
+
+  </div>

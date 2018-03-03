@@ -1,0 +1,72 @@
+<div class="ui comments">
+  <div style="margin-left: 60" class="comment">
+    <a class="avatar">
+      <img style="height: 50px; width:50px, margin: 10px;" src="{{child_comment.user.avatar}}">
+    </a>
+    <div class="content">
+      <a href = "/profile/{{child_comment.user.id}}" class="author">{{child_comment.user.username}}</a>
+      <div class="metadata">
+        <span class="date">Today at 5:42PM</span>
+      </div>
+      <div  href="#" editable-text="child_comment.body" e-form="childCommentForm" onbeforesave="updateComment(child_comment, $data, parent_comment, $index)" class="text">
+      {{child_comment.body || "empty"}}
+      </div>
+      <div class="actions">
+        <a ng-click="setUpReply(child_comment)" class="reply">Reply</a>
+        <a ng-click="deleteComment(parent_comment, $index, child_comment)" class="reply">Delete</a>
+        <a ng-click="childCommentForm.$show()" ng-hide="childCommentForm.$visible">Edit</a>
+      </div>
+      <form ng-submit="replyToComment(child_comment, parent_comment)" ng-show="child_comment.showReply" class="ui reply form">
+        <div class="field">
+          <textarea rows="2" ng-model="child_comment.commentBody"></textarea>
+        </div>
+        <div style="display: inline-block" class="ui blue labeled submit icon button">
+         <button type="submit" style="text-decoration:none; color:white;">Comment</button>
+        </div>
+        <i class="icon "></i><a style="text-decoration:none; color:gray;" ng-click="close(child_comment)">Close</a>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="media">
+
+  <div class="media-body">
+<h4 class="media-heading">
+<img style="width:40" ng-src="{{::avatar}}" /><strong><a href = "/profile/{{::user_id}}">{{::name}}</a></strong> answered
+
+  <div ng-attr-id="answer-{{::id}}"></div>
+
+  <!-- <a ng-click="editQuestion(question, question.group.name)" ng-show ="authorized(question)" class="btn btn-primary">Edit</a> -->
+
+  <br>
+
+  <a ng-click="upvoteAnswer(answer, $index)" class="btn btn-primary">{{answer.up_votes}} Upvotes</a>
+  <span>{{answer.up_votes - answer.down_votes}}</span>
+  <a ng-click="downvoteAnswer(answer, $index)" class="btn btn-primary">{{answer.down_votes}} Downvotes</a>
+  <a ng-click="editAnswer(answer, $index)" ng-show ="authorized(answer)">Edit</a>
+  <a ng-click="deleteAnswer(answer, $index)" ng-show ="authorized(answer)">Delete</a>
+
+  <hr>
+
+  <form ng-submit="commentOnAnswer(answer)"
+    style="margin-top:30px;">
+
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="comment on answer"
+      ng-model="answer.commentBody"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Reply</button>
+  </form>
+
+
+</h4>
+
+</div>
+<div>

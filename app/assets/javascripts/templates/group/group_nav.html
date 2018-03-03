@@ -1,0 +1,111 @@
+
+
+
+<h1>Members</h1>
+<ul style="color:black;" ng-repeat = "user in groupModel.users">
+  <li ng-if="user.id != group.Auth.currentUser.id">
+    <span>{{user.username}}</span> - <button>chat</button> - <button ng-if="group.Auth.cUIsAdminOfCurrentGroup()" ng-click="groupNav.banUser(user)">banUser</button> - <button ng-if= "group.Auth.cUIsAdminOfCurrentGroup() && !group.Auth.isAdminOfCurrentGroup(user)" ng-click="groupNav.makeAdmin(user)">makeAdmin</button>
+  </li>
+</ul>
+
+<h1>Admins</h1>
+<ul style="color:black;" ng-repeat = "user in groupModel.admins">
+  <li>
+    {{user.username}} - <button>chat</button> - <button ng-if="user.id == group.Auth.currentUser.id" ng-click="groupNav.stepDown(user)">resign</button>
+  </li>
+</ul>
+
+
+<h1 ng-if="group.Auth.cUIsAdminOfCurrentGroup()">Banned Users</h1>
+<ul ng-if="group.Auth.cUIsAdminOfCurrentGroup()" style="color:black;" ng-repeat = "user in groupModel.banned_users">
+  <li>
+    {{user.username}} - <button ng-click="groupNav.unban(user)">unban</button>
+  </li>
+</ul>
+
+  <div ng-init=""class="ui styled fluid accordion">
+  <div class="title">
+    <i class="dropdown icon"></i>
+    What is a dog?
+  </div>
+  <div class="content">
+    <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    What kinds of dogs are there?
+  </div>
+  <div class="content">
+    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    How do you acquire a dog?
+  </div>
+  <div class="content">
+    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+  </div>
+</div>
+
+<div class="pusher">
+  Your site's actual content
+</div>
+    <!-- <h1>Topic Profile Photo Here</h1>
+    <h1>{{group.name}}</h1>
+
+    <input type="text"
+    class="form-control"
+    placeholder="search for a question in the group"
+    ng-model="search"></input>
+    <a ng-click="searchInGroup(search)" class="btn btn-success">Search</a>
+
+    <img style="width:250" ng-src="{{group.avatar}}" />
+    <br>
+     <p>Description: {{group.description}}</p>
+     <a ng-if = "!notBannedUser()" class="btn">Sorry, you've been banned from {{group.name}}. Please message admins of group.</a>
+    <button ng-click="followTopic()" ng-if=" notBannedUser() && !group.following" class="btn btn-success">Join the Class</button>
+    <button ng-click="unfollowTopic()" ng-if=" notBannedUser() && group.following" class="btn btn-primary">Leave the Class</button>
+    <a ng-click="askGroup()" ng-if="notBannedUser()" class="btn btn-success">Ask Group</a>
+    <a ng-click="editGroup()" ng-if="adminshipFor(currentUser) || currentUser.role == 'admin'" class="btn btn-success">Edit Group</a>
+    <a ng-click="deleteGroup(group)" ng-if="currentUser.role == 'admin' || adminshipFor(currentUser)" >Delete Group</a>
+    <hr>
+
+      <h3>{{group.memberships.length}}MEMBERS</h3>
+
+      <ul ng-repeat="membership in group.memberships">
+        <a href="/profile/{{membership.user.id}}">{{membership.user.username}}</a>
+        <small><b ng-if="adminshipFor(membership.user)">ADMIN</b></small>
+        <a ng-if="!adminshipFor(membership.user) && adminshipFor(currentUser)" ng-click="makeAdmin(membership.user)">MAKE ADMIN</a>
+        <a ng-if="(!adminshipFor(membership.user)) && (currentUser.id != membership.user.id) && (adminshipFor(currentUser) || currentUser.role == 'admin')" ng-click="banUser(membership.user)">BAN USER</a>
+      </ul>
+
+      <h4>time when group was created</h4>
+      <h4>Rules for discussion:</h4>
+
+      <p>WEEKLY LEADERBOARD:</p>
+      <ul type="pills" vertical="true" ng-repeat ="user in group.users">
+         <li><img style="width:40" ng-src="{{user.avatar}}" /><a href="/profile/{{user.id}}">{{user.username}} : {{user.weekly_reputation_for_topics[group.name] || 0}}</a></li>
+      </ul>
+
+      <br>
+
+      <p>ALL TIME LEADERBOARD:</p>
+      <ul type="pills" vertical="true" ng-repeat ="user in group.users">
+         <li><img style="width:40" ng-src="{{user.avatar}}" /><a href="/profile/{{user.id}}">{{user.username}} : {{user.reputation_for_topics[group.name] || 0}}</a></li>
+      </ul>
+
+      <p>ADMINS:</p>
+      <ul type="pills" vertical="true" ng-repeat ="admin in adminsOfGroup()">
+        <li><img style="width:40" ng-src="{{admin.avatar}}" /><a href="/profile/{{admin.id}}">{{admin.username}}</a>
+        <a ng-if="currentUser.role =='admin' || currentUser.id == admin.id" ng-click="removeAdmin(admin)">remove ADMIN</a></li>
+      </ul>
+
+      <p>BANNED USERS:</P>
+        <ul type="pills" vertical="true" ng-repeat ="ban in bans">
+          <li><img style="width:40" ng-src="{{ban.banned_user.avatar}}" /><a href="/profile/{{ban.banned_user.id}}">{{ban.banned_user.username}}</a>
+          <a ng-if="currentUser.role =='admin' || adminshipFor(currentUser)" ng-click="unbanUser(ban)">unban</a></li>
+        </ul>
+
+
+    </div> -->

@@ -1,0 +1,36 @@
+
+
+
+        <div ng-repeat="answer in question.answers">
+
+                    <answer-quill></answer-quill>
+                    <h4 class="ui dividing header">Comments</h4>
+                    <div ng-repeat="parent_comment in answer.nested_comments" ng-include="'comment/parentComment.html'"></div>
+
+        </div>
+
+
+  </div>
+  <div class ="col-md-4">
+
+    <h4>
+      <a ng-if = "!notBannedUser()" class="btn">Sorry, you've been banned from {{group.name}}. Please message admins of group.</a>
+      <a ng-click="followQuestion(question)" ng-if="!followingQuestion" class="btn btn-primary">Follow Question</a>
+      <a ng-click="unfollowQuestion()" ng-if="followingQuestion" class="btn btn-primary">Unfollow Question</a>
+      <a ng-click="followTopic()" ng-if="notBannedUser() && !followingGroup" class="btn btn-primary">Follow Topic</a>
+      <a ng-click="unfollowTopic()" ng-if="notBannedUser() &&followingGroup" class="btn btn-danger">Unfollow Topic</a>
+      <a ng-click="answer()" ng-if="notBannedUser()" class="btn btn-primary">Answer</a>
+      <a ng-click="deleteQuestion(question)" ng-if ="notBannedUser() && authorized(question)" class="btn btn-danger">Delete</a>
+      <a ng-click="editQuestion(question)" ng-if ="notBannedUser() && authorized(question)" class="btn btn-danger">Edit Question</a>
+
+    </h4>
+
+
+
+
+
+
+  </div>
+
+
+</div>

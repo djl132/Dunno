@@ -1,0 +1,44 @@
+
+
+<div class="page-header">
+  <span>Browse classes </span>
+  <input type="text"
+  class="form-control"
+  placeholder="search for a group"
+  ng-model="searched_group"></input>
+  <a ng-click="groups.search(searched_group)" class="btn btn-success">Search</a>
+
+  <a ng-click="groups.createGroup()" class="btn btn-primary">Create Group</a>
+
+</div>
+
+    <div infinite-scroll='groups.loadNext()' infinite-scroll-immediate-check = 'false' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
+
+      <div ng-repeat="group in groupsView">
+
+      <div class="ui items">
+        <div class="item">
+          <a class="ui tiny image">
+            <img style="width:75" ng-src="{{group.avatar}}" />
+          </a>
+          <div class="content">
+            <a href="/groups/{{group.id}}">{{group.name}}</a>
+            <div class="description">
+              <p>{{group.description}}</p>
+              <p>{{group.member_count}}</p>
+            </div>
+          </div>
+        </div>
+
+        <a ng-click="groups.followTopic(group)" ng-if = "groups.notBannedUser(group) && !followingTopic(group)" class="btn btn-success">Join</a>
+        <a ng-if = "groups.notBannedUser(group) && followingTopic(group)" class="btn btn-success">Joined</a>
+          <a ng-if = "!groups.notBannedUser(group)" class="btn">Sorry, you've been banned from {{group.name}}. Please message admins of group.</a>
+        <hr>
+      </div>
+    </div>
+
+    <div ng-if="loading" class="ui active centered inline loader"></div>
+    <br>
+    <br>
+
+  </div>

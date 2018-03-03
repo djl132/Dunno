@@ -1,0 +1,27 @@
+
+
+<div class="ui large attached message">
+  <div class="header">Create a Group!</div>
+  <p>Make sure that it does not already exist and provide the name of the class and a brief description of the class.</p>
+</div>
+
+<div class="ui large form attached fluid segment">
+
+  <div ng-repeat = "error in errors track by $index" class="ui small negative message">
+    <small>{{error}}</small>
+  </div>
+
+  <div class="field">
+    <label>Class</label>
+    <input ng-model="group.name" type="text">
+  </div>
+
+  <div class="field">
+      <label>Description of the Class</label>
+      <textarea ng-model="group.description" rows="2"></textarea>
+  </div>
+
+  <div ng-click="groupModal.createGroup(group)"class="ui green submit button">Create Group for Class</div>
+  <a ng-click="close()">Cancel</a>
+
+</div>

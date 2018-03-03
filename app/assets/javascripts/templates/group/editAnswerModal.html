@@ -1,0 +1,15 @@
+<form ng-submit="editAnswerModal.editAnswer(answerContent)"
+  style="margin-top:30px;">
+
+  <h3>Edit Answer</h3>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Write your answer..."
+    ng-model="answerContent.body"></input>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Answer</button>
+  <a ng-click="close()">Cancel</a>
+</form>

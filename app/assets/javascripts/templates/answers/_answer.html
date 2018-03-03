@@ -1,0 +1,48 @@
+<div class="answer">
+    <div class="question">
+      <div class="question__first-row">
+        <div class="question__first-row__left-content">
+          <div class="question__avatar">
+            <div class="question__avatar__image">
+              <img src="https://upload.wikimedia.org/wikipedia/en/d/d5/Heart_Beat_-_Wang_Lee_Hom.jpg" />
+              <span><b>2</b>pt</span>
+            </div>
+          </div>
+          <div class="question__user-name">djl132</div>
+        <div class="question__user-status-container"><div class="status"></div></div>
+          <div class="question__expiration">{{::created_at | amDurationFormat : 'day' }}</div>
+        </div>
+        <div class="question__first-row__right-content">
+        </div>
+      </div>
+      <div class="question__second-row">
+        <p ng-attr-id="answer-{{::id}}" class="body"></p>
+      </div>
+      <div class="question__third-row">
+        <a ng-click="group.getComments(answer)">{{answer.comment_count}} comments<span><i id="dropdown-arrow" class="angle right medium icon vote"></i></span></a>
+        <div>
+        <span class="answer__edit-link" ng-if="group.Auth.canEdit(answer)" ng-click="group.editResource('answer', answer)">edit</span>
+        <span class="answer_edit_link" ng-if="group.Auth.canRespondTo(answer)" ng-click="group.setUpResourceCreation('comment', answer)">comment</span>
+        <span class="question__edit-link" ng-if="group.Auth.canEdit(answer)"><b><a ng-click="group.deleteResource('answer', question, answer, $index)">delete</a></b></span>
+        <span class="answer__edit-link" ng-if="group.Auth.canUpdate(answer)" ng-click="group.cancelEdit('answer', answer)">cancel</span>
+        <span class="answer__edit-link" ng-if="group.Auth.canUpdate(answer)" ng-click="group.updateResource('answer', question, answer, $index)"> save</span>
+        </div>
+        <div ng-if="answer.emptyEditor">
+          <small>Sorry, I need more information about your answer.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer__answer-votes">
+      <div class="answer__answer-upvote"><i id="vote-arrow" ng-click="group.upvoteAnswer(question, answer, $index)" class="angle up big icon vote"></i></div>
+      <div class="answer__answer-points">{{answer.points}}</div>
+      <div class="answer__answer-downvote"><i id="vote-arrow" ng-click="group.downvoteAnswer(question, answer, $index)" class="angle down big icon vote"></i></div>
+   </div>
+
+</div>
+
+<div ng-if="answer.open" ng-repeat="comment in answer.comments track by $index">
+  <comment></comment>
+</div>
+
+<comment-form ng-if="answer.creatingChildren"></comment-form>

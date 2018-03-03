@@ -1,0 +1,46 @@
+
+<div class="page-header">
+  <span>Start a conversation </span>
+  <input type="text"
+  class="form-control"
+  placeholder="search for a user"
+  ng-model="searched_user" ng-change="messages.searchForUser(searched_user)"></input>
+</div>
+
+
+<div ng-show="searching">
+      <ul ng-repeat="u in users">
+      <li class="author" >
+        <a class="avatar">
+          <img style="height: 40px; width:40x;" ng-src="u.avatar">
+        </a>
+        <div><a href="/message/{{u.id}}" class="author" >{{u.username}}</a></div>
+      </li>
+    </ul>
+  </div>
+
+
+<!--  HIDE WHEN SEARCHING FOR USERS-->
+    <div ng-if="!searching" ng-repeat = "c in conversations">
+        <div class="ui comments">
+          <div style="margin-left: 5px" class="comment">
+            <a class="avatar">
+              <img style="height: 40px; width:40x;" ng-src="c.other_user.avatar">
+            </a>
+            <div href = "/message/{{c.other_user.id}}" class="author">{{c.other_user.username}} <span class="metadata date">{{c.last_message.created_at | timeAgo}}</span></div>
+            <div class="content">
+              <small class="metadata date author ">{{(c.last_message.user.id == currentUser.id) ? "You :" : (c.last_message.user.username + ":")}}
+              {{c.last_message.body}}
+            </small>
+            </div>
+
+        </div>
+        <div class="action">
+          <a ng-click="messages.deleteConversation(c)" class="reply">Delete Conversation</a>
+          <a ng-href="/message/{{other_user.id}}" class="reply">Show Conversation</a>
+        </div>
+      <hr>
+
+      </div>
+    </div>
+  </div>

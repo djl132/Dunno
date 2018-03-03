@@ -1,0 +1,69 @@
+<style>
+
+
+  .ql-container.ql-snow {
+      border:none;
+    }
+
+</style>
+
+<!-- <div class="page-header">
+  <h3>Feed</h3>
+  <input type="text"
+  class="form-control"
+  placeholder="search for a question"
+  ng-model="index_search"></input>
+  <a ng-click="search(index_search)" class="btn btn-success">Search</a>
+</div> -->
+
+<div class="row">
+  <div class="col-md-8">
+
+
+    <div infinite-scroll='home.loadNext()' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
+
+    <div ng-repeat="question in questions track by $index">
+        <div class="media">
+
+          <div class="media-body">
+            <h3 class="media-heading">
+              <h5>      <img style="width:50" ng-src="{{question.user.avatar}}" /> <a href='/profile/{{question.user.id}}'><b>{{question.user.username}}</b></a>  asked <b><a href="/groups/{{question.group.id}}">{{question.group.name}}</a></b></h5>
+              <!-- <small am-time-ago ="question.created_at" ></small> -->
+
+              <span>question age: {{question.created_at | amDurationFormat : 'minute' }}</span>
+
+              <h4><a href="/questions/{{question.id}}">{{question.title}}</a></h4>
+                <br>
+                <h4>
+                  <a  ng-if="notBannedUser(question)" ng-click="answer(question, $index)" class="btn btn-primary">Answer</a>
+                  <a href="/questions/{{question.id}}" class="btn btn-primary">{{question.answers.length}}Answers</a>
+                  <a ng-click="followQuestion(question, $index)" ng-if="!followingQuestion(question)" class="btn btn-primary">Follow Question</a>
+                  <a ng-click="unfollowQuestion(question, $index)" ng-if="followingQuestion(question)" class="btn btn-primary">Unfollow Question</a>
+                  <a ng-click="home.followTopic(question, $index)" ng-if ="notBannedUser(question) && !followingTopic(question.group)" class="btn btn-primary">Follow Topic</a>
+                  <a ng-click="home.unfollowTopic(question, $index)" ng-if="notBannedUser(question) && followingTopic(question.group)" class="btn btn-primary">Unfollow Topic</a>
+
+                  <a ng-click="home.deleteQuestion(question, $index)" ng-if ="authorized(question) && notBannedUser(question)" class="btn btn-danger">Delete</a>
+                  <a ng-click="home.editQuestion(question, $index)" ng-if ="authorized(question) && notBannedUser(question)" class="btn btn-primary">Edit</a>
+                  <a ng-if = "!notBannedUser(question)" class="btn">Sorry, you've been banned from {{question.group.name}}. Please message admins of group.</a>
+                </h4>
+                <hr>
+
+                <br>
+              </h3>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div ng-if="loading" class="ui active centered inline loader"></div>
+  <br>
+  <br>
+  </div>
+  <div class ="col-md-4">
+
+<a ng-click="ask()" class="btn btn-primary">Ask</a>
+
+</form>
+</div>
+
+
+</div>

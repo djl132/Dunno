@@ -1,0 +1,23 @@
+<div class="ui large attached message ">
+    <div class="header">Answer</div>
+      <div ng-show="noBody" class="ui small negative message">
+        <small>Sorry, I need more information about your answer.</small>
+      </div>
+
+  <div class="ui feed header">
+      <strong>{{username}}</strong>  asked <strong>{{topic}}</strong>
+
+        <h2>  {{title}} </h2>
+        <div id="group-question"></div>
+
+  </div>
+</div>
+
+<div class="ui large form attached fluid segment">
+  <div id="toolbar" class="field"></div>
+  <div id="group-answer-creation" style="border: 1px solid rgba(34,36,38,.15), height: 33%" ></div>
+
+  <a ng-click="answerModal.answer()" class="ui green submit button">Answer</a>
+  <a ng-click="close()">Cancel</a>
+
+</div>
